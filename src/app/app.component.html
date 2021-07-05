@@ -1,4 +1,23 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<h1>
+  {{ name }}
+</h1>
+
+<div>
+  <div *ngFor="let player of players; let i = index">
+    {{player.score}}
+  </div>
+</div>
+
+<div *ngIf="resetFlag">
+  <p>
+    Hurray! {{ winner | uppercase }} won!!
+  </p>
+  <button  (click)="reset()">reset</button>
+</div>
+
+<div>
+  <button *ngFor="let player of players; let i = index" [disabled]="resetFlag" (click)="score(i)"
+  >
+    {{player.name}}
+  </button>
+</div>
